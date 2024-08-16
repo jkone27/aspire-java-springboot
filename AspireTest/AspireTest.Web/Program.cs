@@ -1,5 +1,5 @@
-using aspire_test.Web;
-using aspire_test.Web.Components;
+using AspireTest.Web;
+using AspireTest.Web.Components;
 
 var builder = WebApplication.CreateBuilder(args);
 

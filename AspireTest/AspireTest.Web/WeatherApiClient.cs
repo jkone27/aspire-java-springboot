@@ -1,4 +1,4 @@
-namespace aspire_test.Web;
+namespace AspireTest.Web;
 
 public class WeatherApiClient(HttpClient httpClient)
 {
