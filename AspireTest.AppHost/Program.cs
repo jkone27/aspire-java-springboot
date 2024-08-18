@@ -12,7 +12,18 @@ builder.AddContainer("my-springboot-app", "aspirejava", "0.0.1-SNAPSHOT")
     .WithEndpoint(
         port: 9099,
         targetPort: 8080, 
-        scheme: "http")
+        scheme: "http",
+        name: "web")
+    .WithEndpoint(
+        port: 4317,
+        targetPort: 4317, 
+        scheme: "http",
+        name: "grpc-otel")
+    .WithEndpoint(
+        port: 4318,
+        targetPort: 4318, 
+        scheme: "http",
+        name: "http-otel")
     .WithOtlpExporter();
 
 builder.Build().Run();
