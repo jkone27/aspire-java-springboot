@@ -63,6 +63,7 @@
 							<OTEL_JAVAAGENT_CONFIGURATION_FILE>otel-agent.properties</OTEL_JAVAAGENT_CONFIGURATION_FILE>
 							<OTEL_SERVICE_NAME>aspirejava</OTEL_SERVICE_NAME>
 							<OTEL_JAVAAGENT_LOGGING>application</OTEL_JAVAAGENT_LOGGING>
+							<OTEL_JAVAAGENT_DEBUG>true</OTEL_JAVAAGENT_DEBUG>
                         </env>
                     </image>
 				</configuration>
