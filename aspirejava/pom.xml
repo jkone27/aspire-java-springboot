@@ -39,18 +39,6 @@
 			<artifactId>spring-boot-starter-actuator</artifactId>
 		</dependency>
 		<dependency>
-			<groupId>io.micrometer</groupId>
-			<artifactId>micrometer-tracing</artifactId>
-		</dependency>
-		<dependency>
-			<groupId>io.micrometer</groupId>
-			<artifactId>micrometer-tracing-bridge-otel</artifactId>
-		</dependency>
-		<dependency>
-			<groupId>io.opentelemetry</groupId>
-			<artifactId>opentelemetry-exporter-otlp</artifactId>
-		</dependency>
-		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-test</artifactId>
 			<scope>test</scope>
@@ -61,6 +49,23 @@
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
+				<configuration>
+					<image>
+						<name>aspirejava</name>
+                        <buildpacks>
+                            <buildpack>paketo-buildpacks/java</buildpack>
+                            <buildpack>gcr.io/paketo-buildpacks/opentelemetry</buildpack>
+                        </buildpacks>
+                        <env>
+                            <BP_OPENTELEMETRY_ENABLED>true</BP_OPENTELEMETRY_ENABLED>
+							<BPE_OTEL_JAVAAGENT_ENABLED>true</BPE_OTEL_JAVAAGENT_ENABLED>
+							<OTEL_METRICS_EXPORTER>true</OTEL_METRICS_EXPORTER>
+							<OTEL_JAVAAGENT_CONFIGURATION_FILE>otel-agent.properties</OTEL_JAVAAGENT_CONFIGURATION_FILE>
+							<OTEL_SERVICE_NAME>aspirejava</OTEL_SERVICE_NAME>
+							<OTEL_JAVAAGENT_LOGGING>application</OTEL_JAVAAGENT_LOGGING>
+                        </env>
+                    </image>
+				</configuration>
 				<executions>
 					<execution>
 						<goals>
